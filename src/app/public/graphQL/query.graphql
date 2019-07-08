@@ -1,0 +1,25 @@
+# import './fragment.graphql'
+
+query AllBooks {
+  books {
+    id
+    name
+    version
+    description
+    author {
+      ...AuthorFragment
+    }
+  }
+}
+
+query GetAuthorById($id: Int!) {
+  author (id: $id) {
+    ...AuthorFragment
+  }
+}
+
+query GetBook($id: Int!){
+  book (id: $id) {
+    ...BookFragment
+  }
+}

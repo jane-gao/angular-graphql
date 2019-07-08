@@ -1,0 +1,30 @@
+<div class="panel">
+
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <div class="page-title"><span class="title">currency</span></div>
+      <div *ngIf="loading">
+        Loading...
+      </div>
+      <div *ngIf="error">
+        Error :()
+      </div>
+      <div *ngIf="rates" class="p-15">
+        <div *ngFor="let rate of rates">
+          <p>{{rate.currency}}: {{rate.rate}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div nz-col nzSpan="8">
+      <div class="page-title bl"><span class="title">auto generated gql</span></div>
+      <app-auto></app-auto>
+    </div>
+
+    <div nz-col nzSpan="8">
+      <div class="page-title bl"><span class="title">write gql by hand</span></div>
+      <app-write></app-write>
+    </div>
+
+  </div>
+</div>

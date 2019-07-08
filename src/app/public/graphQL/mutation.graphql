@@ -1,0 +1,7 @@
+mutation UpVersion($id: Int!) {
+  upVersion(bookId: $id) {
+    id
+    name
+    version
+  }
+}

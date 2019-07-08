@@ -1,0 +1,26 @@
+type Author {
+  id: Int!
+  firstName: String
+  lastName: String
+  books: [Book] # the list of Books by this author
+}
+
+# the schema allows the following query:
+type Query {
+  author(id: Int!): Author
+  books: [Book]
+  book(id: Int!): Book
+}
+
+type Book {
+  id: Int!
+  name: String
+  author: Author
+  version: Int
+  description: String
+}
+
+# this schema allows the following mutation:
+type Mutation {
+  upVersion(bookId: Int!): Book
+}

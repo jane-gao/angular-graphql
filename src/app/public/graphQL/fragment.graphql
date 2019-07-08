@@ -1,0 +1,12 @@
+fragment AuthorFragment on Author {
+  id
+  firstName
+  lastName
+}
+
+fragment BookFragment on Book {
+  id
+  name
+  description
+  version
+}
