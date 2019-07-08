@@ -4,8 +4,7 @@ import gql from 'graphql-tag';
 
 @Component({
   selector: 'app-currency',
-  templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.less']
+  templateUrl: './currency.component.html'
 })
 export class CurrencyComponent implements OnInit {
   rates: any[];

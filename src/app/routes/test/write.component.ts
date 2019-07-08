@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'apollo-client/util/Observable';
 import {Apollo} from 'apollo-angular';
-import {AllBooksGQL, GetAuthorByIdGQL} from '../../../graphql/graphql';
+import {TestService} from './test.service';
 
 @Component({
-  selector: 'app-auto',
-  templateUrl: './auto.component.html',
-  styleUrls: ['./auto.component.less']
+  selector: 'app-write',
+  template: `<div class="panel-body">
+    <button nz-button class="m" (click)="watchBooks()">books</button>
+    <button nz-button class="m" (click)="getAuthor()">getAuthor</button>
+  </div>`,
 })
-export class AutoComponent implements OnInit {
+export class WriteComponent implements OnInit, OnDestroy{
   error: any = '';
   books: any;
   author: any;
@@ -17,15 +19,14 @@ export class AutoComponent implements OnInit {
   private querySubscription: Subscription;
 
   constructor(private apollo: Apollo,
-              private allBooksGQL: AllBooksGQL,
-              private getAuthorByIdGQL: GetAuthorByIdGQL) {
+              private testService:TestService) {
   }
 
   ngOnInit() {
   }
 
   watchBooks() {
-    this.querySubscription = this.allBooksGQL.watch().valueChanges
+    this.querySubscription = this.testService.watchAllBooks()
       .subscribe(({data, loading, errors}) => {
         this.books = data.books;
         this.loading = loading;
@@ -34,7 +35,7 @@ export class AutoComponent implements OnInit {
   }
 
   getAuthor() {
-    this.author = this.getAuthorByIdGQL.fetch({id: 1}).subscribe(result => {
+    this.author = this.testService.queryAuthorById(1).subscribe(result => {
       let author = result.data;
       console.log("█ this.author ►►►", author);
     });
