@@ -70,10 +70,6 @@ article or go straight to [documentation](https://graphql-code-generator.com/doc
 Use GQL like in this file `https://github.com/jane-gao/angular-graphql/blob/master/src/app/routes/test/auto.component.ts`
 
 
-## The benefit of use generator:
-
-
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
